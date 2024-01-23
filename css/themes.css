@@ -25638,5 +25638,10 @@ button:focus {
     }
 
     /* essential item */
-
+.cardwh{
+    background-size: auto;
+    width: 100%;
+   height: 80%;
+   background-position: center;
+}
     
