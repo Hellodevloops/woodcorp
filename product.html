@@ -55,36 +55,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-GJzZqFGwb1QTTN4Pz9fxm+Xu9iLAM/Cf/N91GNuhhnD6FNOohGMEojv8F7eN2fip" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyBkYbc60MwXg8R+5SgUJ5I6Zq1z9tMab" crossorigin="anonymous"></script>
 <style>
-   /* footer hover effect */
-
-   .hover-underline a {
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s;
-}
-
-.hover-underline a:hover {
-    color: burlywood; /* Change the color to your desired hover color */
-}
-
-.hover-underline a::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: burlywood; /* Change the color to your desired underline color */
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-}
-
-.hover-underline a:hover::before {
-    visibility: visible;
-    transform: scaleX(1);
-}
+ 
 /* for icons */
 
 .social-icon-square {
@@ -837,14 +808,30 @@ Rating</p>
               </a>
               <!-- <p class="text-gray mt-3">Transforming Spaces, Crafting Dreams</p> -->
           </div>
-          <div class="col-sm-6 col-lg mb-6 mb-lg-0 hover-underline">
+          <div class="col-sm-6 col-lg mb-6 mb-lg-0" style="position: relative;">
             <h5 class="text-secondary mb-4">Explore</h5>
             <ul class="list-unstyled mb-0">
-                <li><a href="index.html" class="lh-213 font-weight-500">Home</a></li>
-                <li><a href="about.html" class="lh-213 font-weight-500">About</a></li>
-                <li><a href="product.html" class="lh-213 font-weight-500">Product</a></li>
+                <li>
+                    <a href="index.html" style="text-decoration: none; color: inherit; transition: color 0.3s; position: relative;">
+                        Home
+                        <span style="position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background-color: burlywood; visibility: hidden; transform: scaleX(0); transition: all 0.3s ease-in-out;"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" style="text-decoration: none; color: inherit; transition: color 0.3s; position: relative;">
+                        About
+                        <span style="position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background-color: burlywood; visibility: hidden; transform: scaleX(0); transition: all 0.3s ease-in-out;"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="product.html" style="text-decoration: none; color: inherit; transition: color 0.3s; position: relative;">
+                        Product
+                        <span style="position: absolute; width: 100%; height: 2px; bottom: 0; left: 0; background-color: burlywood; visibility: hidden; transform: scaleX(0); transition: all 0.3s ease-in-out;"></span>
+                    </a>
+                </li>
             </ul>
         </div>
+        
           <div class="col-sm-6 col-lg mb-6 mb-lg-0 hover-underline">
               <h5 class="text-secondary mb-4">Discover</h5>
               <ul class="list-unstyled mb-0">
