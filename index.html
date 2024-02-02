@@ -55,6 +55,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-GJzZqFGwb1QTTN4Pz9fxm+Xu9iLAM/Cf/N91GNuhhnD6FNOohGMEojv8F7eN2fip" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyBkYbc60MwXg8R+5SgUJ5I6Zq1z9tMab" crossorigin="anonymous"></script>
+
+<style>
+    /* Add your custom styles here */
+    #keyword {
+        color: #ffffff; /* Set the text color to white or the desired color */
+    }
+</style>
 </head>
 <body>
     <header class="main-header navbar-light header-sticky header-sticky-smart header-08">
@@ -71,10 +78,12 @@
         <div class="col-xl-6">
         <form class="d-flex align-items-center h-100">
         <div class="input-group position-relative">
-        <input type="text" class="form-control border-0 border-bottom pl-0 border-2x bg-transparent" placeholder="Search Something...">
-        <div class="input-group-append position-absolute pos-fixed-right-center">
-        <button class="input-group-text bg-transparent border-0 text-primary fs-18 px-0" type="submit"><i class="far fa-search"></i></button>
-        </div>
+            <div class="mb-4">
+                <input type="text" id="keyword" name="keyword" class="form-control border-0 border-bottom border-2x bg-transparent text-white border-white fs-24 form-control-lg" placeholder="Search Items...">
+                <div class="input-group-append position-absolute pos-fixed-right-center">
+                    <button class="input-group-text bg-transparent border-0 text-white fs-30 px-0 btn-lg" type="submit" onclick="performSearch()"><i class="far fa-search"></i></button>
+                </div>
+            </div>
         </div>
         </form>
         </div>
@@ -324,7 +333,7 @@
 <section class="py-lg-15 py-11 ">
     <div class="container container-xxl">
     <h2 class="mb-8 text-center fs-30 fs-md-40">Essenstial Items</h2>
-    <div class="row mb-6 overflow-hidden">
+    <div class="row mb-6 overflow-hidden " id="content">
     <div class="col-sm-6 col-lg-3 mb-6" data-animate="fadeInUp">
         <div class="card border-0 hover-change-content product " >
             <div style="background-image: url('images/product-19.jpg') " class="card-img ratio bg-img-cover-center  ratio-1-1"></div>
@@ -1120,12 +1129,36 @@ Cart</a>
     <li class="list-inline-item"><a href="#" class="fs-20 lh-1"><i class="fab fa-twitter"></i></a></li>
     </ul>
     <p class="mb-0 text-gray">
-    © 2022 Woodcorp.<br>
+    © 2024 Woodcorp.<br>
     All rights reserved.
     </p>
     </div>
     </div>
     </div>
-</body>
 
+
+    <!-- ******JAVASCRIPT******* -->
+
+    <!-- **FOR ESSENTIAL ITEM*** -->
+
+    <script>
+        function performSearch() {
+            // Get the search keyword
+            var keyword = $('#keyword').val().toLowerCase();
+    
+            // Loop through all elements in the content and show/hide based on the search keyword
+            $('#content').find('.product').each(function() {
+                var elementText = $(this).find('.font-weight-bold').text().toLowerCase();
+                var elementAlt = $(this).find('img').attr('alt').toLowerCase();
+    
+                if (elementText.includes(keyword) || elementAlt.includes(keyword) || keyword === "") {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    </script>
+    
+</body>
 </html>

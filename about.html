@@ -67,7 +67,9 @@
 <!-- Bootstrap JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
-  </head>
+
+
+</head>
   <body>
     <header class="main-header navbar-light header-sticky header-sticky-smart header-08">
       
@@ -83,10 +85,17 @@
       <div class="col-xl-6">
       <form class="d-flex align-items-center h-100">
       <div class="input-group position-relative">
-      <input type="text" class="form-control border-0 border-bottom pl-0 border-2x bg-transparent" placeholder="Search Something...">
-      <div class="input-group-append position-absolute pos-fixed-right-center">
-      <button class="input-group-text bg-transparent border-0 text-primary fs-18 px-0" type="submit"><i class="far fa-search"></i></button>
-      </div>
+        <div class="search-box">
+          <input type="text" class="form-control border-0 border-bottom pl-0 border-2x bg-transparent" id="input-box" placeholder="Search Something...">
+          
+          <div class="input-group-append position-absolute pos-fixed-right-center">
+            <button class="input-group-text bg-transparent border-0 text-primary fs-18 px-0" type="submit"><i class="far fa-search"></i></button>
+          </div>
+          <div class="result-box">
+            <ul id="result"></ul>
+          </div>
+        </div>
+    
       </div>
       </form>
       </div>
@@ -283,8 +292,12 @@
         <a class="navbar-brand d-inline-block mx-auto py-0" href="index.html">
         <img src="./img/logowoodbgrem.png" alt="Furnitor">
         </a>
-        <a href="#search-popup" data-gtf-mfp="true" data-mfp-options="{&quot;type&quot;:&quot;inline&quot;,&quot;focus&quot;: &quot;#keyword&quot;,&quot;mainClass&quot;: &quot;mfp-search-form mfp-move-from-top mfp-align-top&quot;}" class="nav-search d-block py-0" title="Search"><i class="far fa-search"></i></a>
-        </nav>
+        
+        <a href="#search-popup" data-gtf-mfp="true" data-mfp-options="{&quot;type&quot;:&quot;inline&quot;,&quot;focus&quot;: &quot;#keyword&quot;,&quot;mainClass&quot;: &quot;mfp-search-form mfp-move-from-top mfp-align-top&quot;}" class="nav-search d-block py-0" id="input-box" title="Search"><i class="far fa-search"></i></a>
+        <div class="result-box">
+          <ul id="result"></ul>
+        </div>
+      </nav>
         </div>
         </div>
         </div>
@@ -1743,12 +1756,81 @@
       <li class="list-inline-item"><a href="#" class="fs-20 lh-1"><i class="fab fa-twitter"></i></a></li>
       </ul>
       <p class="mb-0 text-gray">
-      © 2022 Woodcorp.<br>
+      © 2024 Woodcorp.<br>
       All rights reserved.
       </p>
       </div>
       </div>
       </div>
+<!-- 
+      <script>
+        const inputBox = document.querySelector('#input-box');
+const resultsBox = document.querySelector('.result-box');
+
+let availableKeywords = ['Table', 'Low partision height system', 'Aprom backet-1', 'Aprom backet -2', 'Rock series', 'Spartan series', 'Fighter Series', 'Leo Series', 'Clamp', 'Access Flap Box'];
+
+inputBox.onkeyup = () => {
+    let result = [];
+    let input = inputBox.value.toLowerCase();
+    if (input.length) {
+        result = availableKeywords.filter(keyword => keyword.toLowerCase().startsWith(input));
+    }
+    resultsBox.innerHTML = '';
+    result.forEach(keyword => {
+        let listItem = `<li>${keyword}</li>`;
+        resultsBox.insertAdjacentHTML('beforeend', listItem);
+    });
+    if (!result.length) {
+        resultsBox.innerHTML = '<p style="padding:10px;">No results found!</p>';
+    }
+    resultsBox.style.maxHeight = result.length ? '300px' : '0px';
+};
+
+resultsBox.onclick = (e) => {
+    if (e.target.tagName === 'LI') {
+        inputBox.value = e.target.textContent;
+        resultsBox.innerHTML = '';
+    }
+};
+      </script> -->
+
+      <script>
+        const inputBox = document.querySelector('#input-box');
+const resultBox = document.querySelector('.result-box');
+
+let availableKeywords = ['Table', 'Low partision height system', 'Aprom backet-1', 'Aprom backet -2', 'Rock series', 'Spartan series', 'Fighter Series', 'Leo Series', 'Clamp', 'Access Flap Box'];
+
+inputBox.onkeyup = (event) => {
+  let result = [];
+  resultBox.innerHTML = '';
+  if (inputBox.value) {
+    result = availableKeywords.filter((keyword) => {
+      return keyword.toLowerCase().includes(inputBox.value.toLowerCase());
+    });
+  }
+  if (result.length) {
+    result.forEach((keyword) => {
+      let listItem = document.createElement('li');
+      listItem.textContent = keyword;
+      resultBox.appendChild(listItem);
+
+      listItem.onclick = () => {
+        inputBox.value = keyword;
+        resultBox.innerHTML = '';
+      }
+    });
+    resultBox.classList.add('show');
+  } else {
+    resultBox.classList.remove('show');
+  }
+}
+
+document.addEventListener('click', (event) => {
+  if (!event.target.matches('#input-box')) {
+    resultBox.classList.remove('show');
+  }
+});
+      </script>
   </body>
 
 </html>

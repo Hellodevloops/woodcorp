@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="vendors/animate.css">
 <link rel="stylesheet" href="vendors/mapbox-gl/mapbox-gl.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyBkYbc60MwXg8R+5SgUJ5I6Zq1z9tMab" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <link rel="stylesheet" href="css/themes.css">
 
@@ -88,10 +89,10 @@
     <div class="col-xl-6">
     <form class="d-flex align-items-center h-100">
     <div class="input-group position-relative">
-    <input type="text" class="form-control border-0 border-bottom pl-0 border-2x bg-transparent" placeholder="Search Something...">
-    <div class="input-group-append position-absolute pos-fixed-right-center">
-    <button class="input-group-text bg-transparent border-0 text-primary fs-18 px-0" type="submit"><i class="far fa-search"></i></button>
-    </div>
+      <input type="text" id="keyword" name="keyword" class="form-control border-0 border-bottom border-2x bg-transparent text-white border-white fs-24 form-control-lg" placeholder="Search Something...">
+      <div class="input-group-append position-absolute pos-fixed-right-center">
+          <button class="input-group-text bg-transparent border-0 text-white fs-30 px-0 btn-lg" type="submit" onclick="performSearch()"><i class="far fa-search"></i></button>
+      </div>
     </div>
     </form>
     </div>

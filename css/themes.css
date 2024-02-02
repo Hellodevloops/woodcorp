@@ -2688,6 +2688,10 @@ pre code {
     opacity: 1
 }
 
+/* ::placeholder{
+    color: #000;
+} */
+
 .form-control:disabled,
 .form-control[readonly] {
     background-color: #e9ecef;
@@ -25716,3 +25720,79 @@ button:focus {
     background-color:#c6c8ca;
     border-radius: 8px; /* Optional: Add some border-radius for rounded corners */
   }
+
+  /* for search bar */
+
+  
+  .search-box {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.search-box input[type=text] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.search-box .result-box {
+    position: absolute;
+    top: 150%; /* Adjust this value based on your navbar height */
+    left: 0;
+    width: 100%;
+    z-index: +1000;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    cursor: pointer;
+    background-color: white;
+    list-style-type: none;
+    padding: 20px 20px;
+    color: #000;
+  }
+  
+  @media (max-width: 767px) {
+    result-box {
+      top: 50px; /* Adjust the top value based on your design */
+    }
+  }
+.search-box .result-box :hover{
+    background-color: skyblue;
+}
+
+
+.search-box .result-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-box .result-box ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+
+
+.search-box .result-box ul li:last-child {
+  border-bottom: none;
+}
+
+.search-box .result-box ul li:hover {
+  background-color: #f5f5f5;
+}
+
+.search-box .input-group-append {
+  right: 10px;
+}
+
+.search-box .result-box.show {
+  display: block;
+}
+
+/* search bar end */
+  
