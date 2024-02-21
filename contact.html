@@ -829,12 +829,50 @@ Cart</a>
     <li class="list-inline-item"><a href="#" class="fs-20 lh-1"><i class="fab fa-twitter"></i></a></li>
     </ul>
     <p class="mb-0 text-gray">
-    © 2022 Woodcorp.<br>
+    © 2024 Woodcorp.<br>
     All rights reserved.
     </p>
     </div>
     </div>
     </div>
+     <!-- for a search bar -->
+     <script>
+      const inputBox = document.querySelector('#input-box');
+const resultBox = document.querySelector('.result-box');
+
+let availableKeywords = ['Table', 'Low partision height system', 'Aprom backet-1', 'Aprom backet -2', 'Rock series', 'Spartan series', 'Fighter Series', 'Leo Series', 'Clamp', 'Access Flap Box'];
+
+inputBox.onkeyup = (event) => {
+let result = [];
+resultBox.innerHTML = '';
+if (inputBox.value) {
+  result = availableKeywords.filter((keyword) => {
+    return keyword.toLowerCase().includes(inputBox.value.toLowerCase());
+  });
+}
+if (result.length) {
+  result.forEach((keyword) => {
+    let listItem = document.createElement('li');
+    listItem.textContent = keyword;
+    resultBox.appendChild(listItem);
+
+    listItem.onclick = () => {
+      inputBox.value = keyword;
+      resultBox.innerHTML = '';
+    }
+  });
+  resultBox.classList.add('show');
+} else {
+  resultBox.classList.remove('show');
+}
+}
+
+document.addEventListener('click', (event) => {
+if (!event.target.matches('#input-box')) {
+  resultBox.classList.remove('show');
+}
+});
+    </script>
 </body>
 
 </html>
